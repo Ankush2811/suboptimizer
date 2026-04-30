@@ -1,0 +1,65 @@
+type Timestamp = int;
+type SubscriptionInput = 
+ record {
+   billingCycle: BillingCycle;
+   category: Category;
+   logoEmoji: opt text;
+   name: text;
+   nextPaymentDate: text;
+   notes: opt text;
+   price: Paise;
+ };
+type SubscriptionId = nat;
+type Subscription = 
+ record {
+   billingCycle: BillingCycle;
+   category: Category;
+   createdAt: Timestamp;
+   id: SubscriptionId;
+   isActive: bool;
+   logoEmoji: opt text;
+   name: text;
+   nextPaymentDate: text;
+   notes: opt text;
+   price: Paise;
+ };
+type Paise = nat;
+type OptimizationSuggestion = 
+ record {
+   potentialSaving: Paise;
+   reason: text;
+   subscription: Subscription;
+ };
+type CategoryBreakdown = 
+ record {
+   category: Category;
+   totalMonthlyPaise: Paise;
+ };
+type Category = 
+ variant {
+   Entertainment;
+   Finance;
+   Health;
+   Other;
+   Productivity;
+ };
+type BillingCycle = 
+ variant {
+   Annual;
+   Monthly;
+   Quarterly;
+ };
+service : {
+  addSubscription: (input: SubscriptionInput) -> (SubscriptionId);
+  cancelSubscription: (id: SubscriptionId) -> (bool);
+  getCategoryBreakdown: () -> (vec CategoryBreakdown) query;
+  getOnboardingComplete: () -> (bool) query;
+  getOptimizationSuggestions: () -> (vec OptimizationSuggestion) query;
+  getSubscriptionById: (id: SubscriptionId) -> (opt Subscription) query;
+  getSubscriptions: () -> (vec Subscription) query;
+  getTotalMonthlySpend: () -> (nat) query;
+  getUpcomingRenewals: (isoToday: text) -> (vec Subscription) query;
+  setOnboardingComplete: () -> ();
+  updateSubscription: (id: SubscriptionId, input: SubscriptionInput) ->
+   (bool);
+}

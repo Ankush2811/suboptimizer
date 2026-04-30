@@ -1,0 +1,24 @@
+{
+  "overview": "A modern fintech-style Subscription Optimizer app for Indian users to track, manage, and optimize recurring subscriptions. Features dashboard with total spend and savings highlights, subscription management, visual insights with spending charts, and smart optimization suggestions — all in a clean indigo/green light theme.",
+  "features": [
+    "Dashboard with total monthly spend (₹) and savings potential",
+    "Upcoming renewals alert card with days remaining",
+    "Subscription list with logos, prices, billing cycles, and category tags",
+    "Add Subscription screen with popular templates (Netflix, Spotify, Hotstar, etc.)",
+    "Insights screen with spending breakdown charts and optimization suggestions",
+    "Subscription detail view with edit and cancel options",
+    "Onboarding screens with friendly savings messaging",
+    "Bottom navigation (Home, Insights, Add, Profile)",
+    "Light fintech theme: indigo/blue accents, green savings highlights, soft shadows, rounded cards"
+  ],
+  "category": "productivity",
+  "tags": [
+    "subscriptions",
+    "fintech",
+    "indian-users",
+    "expense-tracking",
+    "savings",
+    "mobile-ui"
+  ],
+  "last_updated": "2026-04-23T06:26:45.176Z"
+}

@@ -1,0 +1,47 @@
+// Version: 1.0.0
+type BillingCycle__788426662 = {#Annual; #Monthly; #Quarterly};
+type Category__23990089 =
+  {#Entertainment; #Finance; #Health; #Other; #Productivity};
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type OnboardingState__142082951 = {var completed : Bool};
+type Paise__324661981 = Nat;
+type Paise__751084391 = Paise__324661981;
+type SubscriptionId__300481435 = Nat;
+type SubscriptionId__491476973 = SubscriptionId__300481435;
+type SubscriptionInternal__303607471 =
+  {
+    var billingCycle : BillingCycle__788426662;
+    var category : Category__23990089;
+    createdAt : Timestamp__757082740;
+    id : SubscriptionId__491476973;
+    var isActive : Bool;
+    var logoEmoji : ?Text;
+    var name : Text;
+    var nextPaymentDate : Text;
+    var notes : ?Text;
+    var price : Paise__751084391
+  };
+type Timestamp__301639476 = Int;
+type Timestamp__757082740 = Timestamp__301639476;
+actor {
+  stable nextId : {var value : Nat};
+  stable onboardingStore :
+    {
+      var root : Node__46230540<Text, OnboardingState__142082951>;
+      var size : Nat__490723111
+    };
+  stable subscriptions :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?SubscriptionInternal__303607471]];
+      var elementIndex : Nat__490723111
+    }
+};
